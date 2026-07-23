@@ -1,7 +1,6 @@
 // src/App.tsx
 import { BuilderProvider } from './context/BuilderContext';
-// Make sure these components exist or create placeholder components
-import { MainLayout } from './layouts/MainLayout';
+import { MainLayout } from './components/layouts/MainLayout';
 import { Builder } from './components/builder/Builder';
 import { ReviewPanel } from './components/review/ReviewPanel';
 
@@ -17,3 +16,6 @@ function App() {
 }
 
 export default App;
+
+
+

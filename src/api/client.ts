@@ -1,5 +1,5 @@
 // src/api/client.ts
-import type { ApiResponse, ApiError, HttpMethod } from '../types/api';
+import type { ApiResponse, ApiError, HttpMethod } from "../types/api";
 
 interface RequestOptions {
   method?: HttpMethod;
@@ -12,16 +12,21 @@ class ApiClient {
   private baseUrl: string;
   private defaultTimeout: number;
 
-  constructor(baseUrl: string = '/api', defaultTimeout: number = 5000) {
+  constructor(baseUrl: string = "/api", defaultTimeout: number = 5000) {
     this.baseUrl = baseUrl;
     this.defaultTimeout = defaultTimeout;
   }
 
   async request<T>(
     endpoint: string,
-    options: RequestOptions = {}
+    options: RequestOptions = {},
   ): Promise<ApiResponse<T>> {
-    const { method = 'GET', body, headers = {}, timeout = this.defaultTimeout } = options;
+    const {
+      method = "GET",
+      body,
+      headers = {},
+      timeout = this.defaultTimeout,
+    } = options;
 
     // Simulate network delay
     await this.simulateDelay(300);
@@ -29,7 +34,7 @@ class ApiClient {
     // Get mock data
     try {
       const data = await this.getMockData<T>(endpoint, method, body);
-      
+
       return {
         data,
         status: 200,
@@ -50,30 +55,30 @@ class ApiClient {
       "GET /products": () =>
         import("./endpoints/products").then((m) => m.getProducts()),
       "GET /products/category": () =>
-        import("./endpoints/products").then((m) =>
-          m.getProductsByCategory('') // Pass empty string as default
+        import("./endpoints/products").then(
+          (m) => m.getProductsByCategory(""), // Pass empty string as default
         ),
       "GET /bundle/state": () =>
         import("./endpoints/bundle").then((m) => m.getBundleState()),
       "POST /bundle/save": () =>
-        import("./endpoints/bundle").then((m) =>
-          m.saveBundleState({ currentStep: 1, selectedItems: [] }) // Provide default state
+        import("./endpoints/bundle").then(
+          (m) => m.saveBundleState({ currentStep: 1, selectedItems: [] }), // Provide default state
         ),
     };
 
     // For dynamic endpoints with query params
-    const baseEndpoint = endpoint.split('?')[0];
+    const baseEndpoint = endpoint.split("?")[0];
     const key = `${method} ${baseEndpoint}`;
     let handler = endpointMap[key];
 
     // If no exact match, try to find a pattern match
     if (!handler) {
       // Handle GET /products/category/xxx pattern
-      if (method === 'GET' && baseEndpoint.startsWith('/products/category/')) {
-        const category = baseEndpoint.split('/').pop() || '';
+      if (method === "GET" && baseEndpoint.startsWith("/products/category/")) {
+        const category = baseEndpoint.split("/").pop() || "";
         handler = () =>
           import("./endpoints/products").then((m) =>
-            m.getProductsByCategory(category)
+            m.getProductsByCategory(category),
           );
       }
     }
@@ -86,43 +91,45 @@ class ApiClient {
   }
 
   private simulateDelay(ms: number): Promise<void> {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   }
 
   private handleError(error: unknown): ApiError {
     if (error instanceof Error) {
       return {
-        code: 'API_ERROR',
+        code: "API_ERROR",
         message: error.message,
         status: 500,
       };
     }
     return {
-      code: 'UNKNOWN_ERROR',
-      message: 'An unknown error occurred',
+      code: "UNKNOWN_ERROR",
+      message: "An unknown error occurred",
       status: 500,
     };
   }
 
   // Convenience methods
   async get<T>(endpoint: string): Promise<ApiResponse<T>> {
-    return this.request<T>(endpoint, { method: 'GET' });
+    console.log("endpint is ", endpoint);
+    console.log("return is ",this.request<T>(endpoint, { method: "GET" }));
+    return this.request<T>(endpoint, { method: "GET" });
   }
 
   async post<T>(endpoint: string, body: unknown): Promise<ApiResponse<T>> {
-    return this.request<T>(endpoint, { method: 'POST', body });
+    return this.request<T>(endpoint, { method: "POST", body });
   }
 
   async put<T>(endpoint: string, body: unknown): Promise<ApiResponse<T>> {
-    return this.request<T>(endpoint, { method: 'PUT', body });
+    return this.request<T>(endpoint, { method: "PUT", body });
   }
 
   async patch<T>(endpoint: string, body: unknown): Promise<ApiResponse<T>> {
-    return this.request<T>(endpoint, { method: 'PATCH', body });
+    return this.request<T>(endpoint, { method: "PATCH", body });
   }
 
   async delete<T>(endpoint: string): Promise<ApiResponse<T>> {
-    return this.request<T>(endpoint, { method: 'DELETE' });
+    return this.request<T>(endpoint, { method: "DELETE" });
   }
 }
 

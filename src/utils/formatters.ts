@@ -1,9 +1,10 @@
 // utils/formatters.ts
+// src/utils/formatters.ts
 export function formatPrice(price: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
-    minimumFractionDigits: 2
+    minimumFractionDigits: 2,
   }).format(price);
 }
 

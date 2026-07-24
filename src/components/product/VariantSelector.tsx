@@ -1,5 +1,3 @@
-// src/components/product/VariantSelector.tsx
-import React from "react";
 import type { Variant } from "../../types/product";
 import { cn } from "../../utils/cn";
 
@@ -21,9 +19,9 @@ export function VariantSelector({
           key={variant.id}
           onClick={() => onSelect(variant.id)}
           className={cn(
-            "flex items-center px-[1px] rounded-2 border-varient border-[.5px] transition-all duration-200",
+            "flex items-center px-[4px] rounded-2 border-border-varient border-[.5px] transition-all duration-200",
             selectedVariant === variant.id
-              ? "border-selected bg-state-varientSelectedBg"
+              ? "border-border-selected bg-state-varientSelectedBg"
               : "border-gray-200  bg-white",
           )}
         >

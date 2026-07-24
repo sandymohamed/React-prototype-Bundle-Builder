@@ -75,9 +75,14 @@ export default {
         surface: '#F8FAFF',
         text: {
           title: '#0B0D10',
+          subTitle:'#484848',
           card: '#1F1F1F',
-          secondary: '#6B7280',
-          muted: '#9CA3AF',
+          secondary: '#4E2FD2',
+          muted: '#575757',
+          desc:'#1F1F1FBF',
+          error:'#D8392B',
+          gray500:"#A8B2BD",
+          gray600:"#6F7882",
         },
         accent: {
           green: '#0AA288',
@@ -93,7 +98,7 @@ export default {
         state: {
           selected: '#4E2FD2',
           selectedBg: '#F0EDFF',
-          varientSelectedBg:'#1DF0BB0A',
+          varientSelectedBg: '#1DF0BB0A',
           hover: '#F9FAFB',
         },
         discount: {
@@ -106,10 +111,10 @@ export default {
         },
       },
       fontFamily: {
-        'gilroy': ['Gilroy', 'sans-serif'],
-        'gilroy-medium': ['Gilroy-Medium', 'sans-serif'],
-        'gilroy-semibold': ['Gilroy-SemiBold', 'sans-serif'],
-        'gilroy-bold': ['Gilroy-Bold', 'sans-serif'],
+        'gilroy': ['Gilroy', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'gilroy-medium': ['Gilroy', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'gilroy-semibold': ['Gilroy', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+        'gilroy-bold': ['Gilroy', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
       },
       fontSize: {
         'xs': ['10px', { lineHeight: '130%', letterSpacing: '0.6px' }],

@@ -7,6 +7,7 @@ interface AccordionStepProps {
   stepNumber: number;
   totalSteps: number;
   title: string;
+  nextStepTitle: string | null;
   category:
     | "chevron-up"
     | "chevron-down"
@@ -28,6 +29,7 @@ export function AccordionStep({
   stepNumber,
   totalSteps,
   title,
+  nextStepTitle,
   category,
   isOpen,
   selectedCount,
@@ -36,7 +38,25 @@ export function AccordionStep({
   children,
 }: AccordionStepProps) {
   const { isMobile } = useResponsive();
-
+  console.log(
+    `  stepNumber,
+  totalSteps,
+  title,
+  category,
+  isOpen,
+  selectedCount,
+  onToggle,
+  onNext,
+  children,` + stepNumber,
+    totalSteps,
+    title,
+    category,
+    isOpen,
+    selectedCount,
+    onToggle,
+    onNext,
+    children,
+  );
   return (
     <div
       className={cn(
@@ -48,7 +68,6 @@ export function AccordionStep({
         "opacity-100",
       )}
     >
-      {/* Header - with hover state */}
       <button
         onClick={onToggle}
         className="w-full flex items-center justify-between rounded-lg px-1 pb-4"
@@ -85,20 +104,20 @@ export function AccordionStep({
         </div>
       </button>
 
-      {/* Content - with gap 15px from Figma */}
       {isOpen && (
-        <div className="animate-slide-down space-y-[15px]">
+        <div className="animate-slide-down space-y-[15px] flex flex-col items-center justify-between">
           {children}
 
           {onNext && (
             <button
               onClick={onNext}
-              className="mt-4 w-full sm:w-auto px-6 py-2.5 bg-primary text-white font-gilroy-semibold rounded-xl 
-                       hover:bg-primary-dark transition-all duration-200 
-                       focus:outline-none focus:ring-2 focus:ring-primary-light focus:ring-offset-2"
+              className="mt-4 px-6 py-2 w-full sm:w-auto 
+              border-[1px] border-accent-blue rounded-7 
+              bg-[transparent] text-accent-blue  text-lg  
+              slide-down
+            focus:bg-slate-300 "
             >
-              Next:{" "}
-              {stepNumber < totalSteps ? `Step ${stepNumber + 1}` : "Finish"}
+              Next: {nextStepTitle}
             </button>
           )}
         </div>

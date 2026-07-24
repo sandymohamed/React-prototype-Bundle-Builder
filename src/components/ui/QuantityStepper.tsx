@@ -1,7 +1,5 @@
-// src/components/ui/QuantityStepper.tsx
-import React from 'react';
-// import { Minus, Plus } from 'lucide-react';
-import { cn } from '../../utils/cn';
+import { cn } from "../../utils/cn";
+import { Icon } from "./Icon";
 
 interface QuantityStepperProps {
   value: number;
@@ -11,12 +9,12 @@ interface QuantityStepperProps {
   disabled?: boolean;
 }
 
-export function QuantityStepper({ 
-  value, 
-  onChange, 
-  min = 0, 
+export function QuantityStepper({
+  value,
+  onChange,
+  min = 0,
   max = 99,
-  disabled = false 
+  disabled = false,
 }: QuantityStepperProps) {
   const decrement = () => {
     if (value > min) {
@@ -36,14 +34,13 @@ export function QuantityStepper({
         onClick={decrement}
         disabled={disabled || value <= min}
         className={cn(
-          "w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center",
-          "hover:bg-gray-50 transition-colors duration-200",
+          "w-[20px] h-[20px] rounded-4  border-[2px] border-[#E6EBF0] color-[#CED6DE] flex items-center justify-center",
           "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
-          "focus:outline-none focus:ring-2 focus:ring-primary-light"
+          "focus:outline-none focus:ring-2 focus:ring-primary-light",
         )}
         aria-label="Decrease quantity"
       >
-     Minus   {/* <Minus className="w-4 h-4" /> */}
+       <Icon name="minus" />
       </button>
       <span className="w-8 text-center font-gilroy-medium text-text-title">
         {value}
@@ -51,15 +48,14 @@ export function QuantityStepper({
       <button
         onClick={increment}
         disabled={disabled || value >= max}
-        className={cn(
-          "w-8 h-8 rounded-full border border-gray-300 flex items-center justify-center",
-          "hover:bg-gray-50 transition-colors duration-200",
+       className={cn(
+          "w-[20px] h-[20px] rounded-4 bg-[#F0F4F7] color-[#525963] flex items-center justify-center",
           "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
-          "focus:outline-none focus:ring-2 focus:ring-primary-light"
+          "focus:outline-none focus:ring-2 focus:ring-primary-light",
         )}
         aria-label="Increase quantity"
       >
-     Plus   {/* <Plus className="w-4 h-4" /> */}
+          <Icon name="plus" />
       </button>
     </div>
   );

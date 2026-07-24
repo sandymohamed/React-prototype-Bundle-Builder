@@ -1,7 +1,87 @@
-/* src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Font Face declarations */
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Medium';
+  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-SemiBold';
+  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy-Bold';
+  src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
 @layer base {
   * {
@@ -9,9 +89,8 @@
   }
 
   body {
-    background-color: #FFFFFF;
-    color: #6B7280;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    @apply bg-background text-text-secondary;
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 
   h1,
@@ -20,37 +99,31 @@
   h4,
   h5,
   h6 {
-    font-weight: 600;
-    color: #0B0D10;
-  }
-
-  ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background-color: #F3F4F6;
-    border-radius: 9999px;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background-color: #6B4FE0;
-    border-radius: 9999px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background-color: #4E2FD2;
+    @apply font-semibold text-text-title;
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
 }
 
 @layer components {
-  .text-body {
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 130%;
-    letter-spacing: 0.6px;
-    color: #6B7280;
+
+  /* Your utility classes with correct font families */
+  .font-gilroy {
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  .font-gilroy-medium {
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+  }
+
+  .font-gilroy-semibold {
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+  }
+
+  .font-gilroy-bold {
+    font-family: 'Gilroy', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 700;
   }
 
   .text-title {
@@ -59,60 +132,30 @@
   }
 
   .text-card-title {
+    font-family: 'Gilroy-SemiBold';
     font-weight: 400;
     color: #1F1F1F;
   }
 
-
-
-  .btn-primary {
-    background-color: #4E2FD2;
-    color: white;
-    font-weight: 600;
-    padding: 0.625rem 1.5rem;
-    border-radius: 0.75rem;
-    transition-property: background-color;
-    transition-duration: 200ms;
+  .text-body {
+    font-family: 'Gilroy-Medium';
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 130%;
+    letter-spacing: 0.6px;
   }
 
-  .btn-primary:hover {
-    background-color: #3D25A8;
-  }
-
-  .btn-primary:focus {
-    outline: 2px solid #6B4FE0;
-    outline-offset: 2px;
-  }
-
-  .btn-secondary {
-    background-color: #EDF4FF;
+  .card-span-text {
+    font-family: Gilroy-Medium;
+    line-height: 130%;
+    letter-spacing: 0.6px;
+    vertical-align: middle;
+    text-decoration: underline;
+    text-decoration-style: solid;
     color: #4E2FD2;
-    font-weight: 600;
-    padding: 0.625rem 1.5rem;
-    border-radius: 0.75rem;
-    transition-property: background-color, color;
-    transition-duration: 200ms;
+
   }
 
-  .btn-secondary:hover {
-    background-color: #6B4FE0;
-    color: white;
-  }
-
-  .btn-outline {
-    border: 2px solid #4E2FD2;
-    color: #4E2FD2;
-    font-weight: 600;
-    padding: 0.625rem 1.5rem;
-    border-radius: 0.75rem;
-    transition-property: background-color, color;
-    transition-duration: 200ms;
-  }
-
-  .btn-outline:hover {
-    background-color: #4E2FD2;
-    color: white;
-  }
 
   .card {
     background-color: white;
@@ -120,7 +163,7 @@
     padding: 11px;
     gap: 13px
   }
-  
+
   .card-selected {
     border: 2px solid #4E2FD2B2;
     gap: 19px
@@ -133,12 +176,13 @@
   }
 
   .badge-discount {
-    background-color: #FEF3C7;
-    color: #92400E;
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.625rem;
-    border-radius: 9999px;
+    background-color: #4E2FD2;
+    color: #ffff;
+    font-size: 12px;
+    font-weight: 400;
+    padding: 2px 6px;
+    border-radius: 10px;
+    text-align: center;
   }
 
   .badge-success {
@@ -150,5 +194,9 @@
     border-radius: 9999px;
   }
 
-
+  .slide-down {
+    font-family: 'Gilroy-SemiBold';
+    font-weight: 400;
+    line-height: 24px;
+  }
 }

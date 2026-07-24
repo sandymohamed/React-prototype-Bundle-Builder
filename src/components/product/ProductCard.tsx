@@ -48,7 +48,7 @@ export function ProductCard({
   return (
     <div
       className={cn(
-        "card transition-all duration-200",
+        "card transition-all duration-200 min-h-[170px]",
         isSelected && "card-selected",
       )}
     >
@@ -60,7 +60,7 @@ export function ProductCard({
                 <ProductBadge label={product.badge} />
               </div>
             )}
-            <div className="absolute top-10 left-0 z-10">
+            <div className="absolute top-8 left-0 z-10">
               <ProductImage
                 src={product.image}
                 alt={product.title}
@@ -73,23 +73,23 @@ export function ProductCard({
         <div className="col-span-2 min-w-0">
           <div>
             <h3 className="text-card-title text-base mb-1">{product.title}</h3>
-            {product.description && (
-              <p className="text-body text-text-secondary">
+            {product.description ? (
+              <p className="text-body text-text-card">
                 {product.description}
-              </p>
-            )}
-          </div>
 
-          {product.learnMoreUrl && product.learnMoreUrl !== "#" && (
-            <a
-              href={product.learnMoreUrl}
-              className="text-xs text-primary hover:text-primary-dark underline mt-1 inline-block"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn More
-            </a>
-          )}
+                <a
+                  href={product.learnMoreUrl}
+                  className={hasVariants ? "" : " block w-[100%] " + " card-span-text"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Learn More
+                </a>
+              </p>
+            ): 
+            <div className="w-full h-8" />
+            }
+          </div>
 
           {hasVariants && (
             <div className="mt-3">
@@ -101,16 +101,16 @@ export function ProductCard({
             </div>
           )}
 
-          <div className="mt-3 flex items-center justify-between gap-4">
-            <ProductPrice
-              price={product.price}
-              compareAtPrice={product.compareAtPrice}
-            />
+          <div className="mt-[10px] flex items-center justify-between gap-4">
             <QuantityStepper
               value={quantity}
               onChange={handleQuantityChange}
               min={0}
               max={99}
+            />
+            <ProductPrice
+              price={product.price}
+              compareAtPrice={product.compareAtPrice}
             />
           </div>
         </div>

@@ -32,7 +32,9 @@ export function Builder() {
           const products = stepProducts[step.id] || [];
           const isOpen = currentStep === step.id;
           const selectedCount = getStepSelectedCount(step.id);
-
+          const nextStepTitle = steps[index + 1]
+            ? steps[index + 1].title
+            : null;
           return (
             <>
               <span
@@ -58,6 +60,7 @@ export function Builder() {
                 stepNumber={index + 1}
                 totalSteps={steps.length}
                 title={step.title}
+                nextStepTitle={nextStepTitle}
                 category={step.category}
                 isOpen={isOpen}
                 selectedCount={selectedCount}
@@ -65,19 +68,28 @@ export function Builder() {
                 onToggle={() => actions.goToStep(step.id)} //TODO: update to toggle not just open
                 onNext={index < steps.length - 1 ? handleNextStep : undefined}
               >
-                <div className="grid grid-cols-2  gap-4   ">
+                <div className="w-full flex flex-wrap justify-center gap-4">
                   {products.map((product) => (
-                    <ProductCard
+                    <div
                       key={product.id}
-                      product={product}
-                      selectedItems={selectedItems}
-                      onVariantSelect={(variantId) =>
-                        actions.selectVariant(product.id, variantId)
-                      }
-                      onQuantityChange={(variantId, quantity) =>
-                        actions.updateQuantity(product.id, variantId, quantity)
-                      }
-                    />
+                      className= "flex-1 min-w-[calc(50%-0.5rem)] max-w-[calc(50%-0.5rem)]"
+                    >
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        selectedItems={selectedItems}
+                        onVariantSelect={(variantId) =>
+                          actions.selectVariant(product.id, variantId)
+                        }
+                        onQuantityChange={(variantId, quantity) =>
+                          actions.updateQuantity(
+                            product.id,
+                            variantId,
+                            quantity,
+                          )
+                        }
+                      />
+                    </div>
                   ))}
                 </div>
               </AccordionStep>

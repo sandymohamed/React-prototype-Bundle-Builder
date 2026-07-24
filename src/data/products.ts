@@ -23,7 +23,7 @@ import camBatteryProBlack from "../assets/images/variants/battery-cam-pro-black.
 import sensorMotions from "../assets/images/sensors/motion-sensor.png";
 import sensorHub from "../assets/images/sensors/sense-hub.png";
 
-import planUnlimited from "../assets/images/plans/unlimited.svg?url";
+import planUnlimited from "../assets/images/plans/plan.png";
 import accessoriesMicroSD from "../assets/images/accessories/micro-sd.png";
 
 export const products: Product[] = [

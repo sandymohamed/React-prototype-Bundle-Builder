@@ -60,17 +60,16 @@ export function AccordionStep({
   return (
     <div
       className={cn(
-        "bg-paper overflow-hidden transition-all duration-200",
-        "border-t border-[#1F1F1F]",
-        "border-t-[0.5px]",
+        " overflow-hidden transition-all duration-200",
         "pt-5 pb-5 px-[15px]",
         "w-full",
         "opacity-100",
-      )}
+    isOpen ? " " :     " border-[#1F1F1F] border-t-[0.5px] border-b-[0.5px]",
+      ) }
     >
       <button
         onClick={onToggle}
-        className="w-full flex items-center justify-between rounded-lg px-1 pb-4"
+        className="w-full flex items-center justify-between rounded-lg px-1 "
         aria-expanded={isOpen}
       >
         <div className="flex items-center gap-3">

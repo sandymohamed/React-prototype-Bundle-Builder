@@ -25,9 +25,9 @@ export function Builder() {
   };
 
   return (
-    <div className="bg-paper space-4 rounded-10">
+    <div className=" ">
       {/* Steps */}
-      <div className="bg-transparent p-4">
+      <div className="">
         {steps.map((step, index) => {
           const products = stepProducts[step.id] || [];
           const isOpen = currentStep === step.id;
@@ -36,14 +36,13 @@ export function Builder() {
             ? steps[index + 1].title
             : null;
           return (
-            <>
+            <div  className={(isOpen ? "bg-paper " :" ") + "  w-full rounded-10"} >
               <span
-                className="font-gilroy-semibold text-text-title"
+                className="semibold-400 p-4 text-text-title"
                 style={{
                   fontFamily: "Gilroy-Medium, sans-serif",
                   fontWeight: 400,
                   fontSize: isMobile ? "10px" : "12px",
-                  lineHeight: "100%",
                   letterSpacing: "0px",
                   color: "#484848",
                   background: "#0B0D10",
@@ -72,7 +71,7 @@ export function Builder() {
                   {products.map((product) => (
                     <div
                       key={product.id}
-                      className= "flex-1 min-w-[calc(50%-0.5rem)] max-w-[calc(50%-0.5rem)]"
+                      className="flex-1 min-w-[calc(50%-0.5rem)] max-w-[calc(50%-0.5rem)]"
                     >
                       <ProductCard
                         key={product.id}
@@ -93,7 +92,7 @@ export function Builder() {
                   ))}
                 </div>
               </AccordionStep>
-            </>
+            </div>
           );
         })}
       </div>

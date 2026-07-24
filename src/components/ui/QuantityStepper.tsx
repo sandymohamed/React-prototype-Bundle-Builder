@@ -7,6 +7,7 @@ interface QuantityStepperProps {
   min?: number;
   max?: number;
   disabled?: boolean;
+  background?: string;
 }
 
 export function QuantityStepper({
@@ -15,6 +16,7 @@ export function QuantityStepper({
   min = 0,
   max = 99,
   disabled = false,
+  background = "#F0F4F7",
 }: QuantityStepperProps) {
   const decrement = () => {
     if (value > min) {
@@ -34,13 +36,16 @@ export function QuantityStepper({
         onClick={decrement}
         disabled={disabled || value <= min}
         className={cn(
-          "w-[20px] h-[20px] rounded-4  border-[2px] border-[#E6EBF0] color-[#CED6DE] flex items-center justify-center",
-          "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+          "w-[20px] h-[20px] rounded-4  border-[2px] color-[#CED6DE] flex items-center justify-center",
+          "disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent disabled: border-[#E6EBF0] ",
           "focus:outline-none focus:ring-2 focus:ring-primary-light",
         )}
+        style={{
+          background: background,
+        }}
         aria-label="Decrease quantity"
       >
-       <Icon name="minus" />
+        <Icon name="minus" />
       </button>
       <span className="w-8 text-center font-gilroy-medium text-text-title">
         {value}
@@ -48,14 +53,17 @@ export function QuantityStepper({
       <button
         onClick={increment}
         disabled={disabled || value >= max}
-       className={cn(
-          "w-[20px] h-[20px] rounded-4 bg-[#F0F4F7] color-[#525963] flex items-center justify-center",
-          "disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-transparent",
+        className={cn(
+          "w-[20px] h-[20px] rounded-4  color-[#525963] flex items-center justify-center",
+          "disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-transparent disabled: border-[#E6EBF0] ",
           "focus:outline-none focus:ring-2 focus:ring-primary-light",
         )}
+        style={{
+          background: background,
+        }}
         aria-label="Increase quantity"
       >
-          <Icon name="plus" />
+        <Icon name="plus" />
       </button>
     </div>
   );
